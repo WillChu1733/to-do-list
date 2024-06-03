@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-export const Todo = ({ task, toggleComplete }) => {
+export const Todo = ({ task, toggleComplete, deleteTodo, editTodo }) => {
   console.log('task prop:', task)
 
   // defensive programming
@@ -18,8 +18,11 @@ export const Todo = ({ task, toggleComplete }) => {
         {task.task}
       </p>
       <div>
-        <FontAwesomeIcon icon={faPenToSquare} />
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon
+          icon={faPenToSquare}
+          onClick={() => editTodo(task.id)}
+        />
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(task.id)} />
       </div>
     </div>
   )
